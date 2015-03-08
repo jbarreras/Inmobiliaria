@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="Inmobiliaria">
+				<and abstract="true" name="GestionCapital">
+					<feature name="GobiernoCorporativo"/>
+					<feature name="RelacionInversores"/>
+					<feature mandatory="true" name="Inversiones"/>
+					<alt mandatory="true" name="AdquisicionYVentaDeActivos">
+						<alt mandatory="true" name="Alternativos">
+							<feature mandatory="true" name="Vehiculos"/>
+							<feature mandatory="true" name="PatrimoniosAutonomos"/>
+							<feature mandatory="true" name="FondoCapitalPrivado"/>
+							<feature mandatory="true" name="CarterasColectivas"/>
+						</alt>
+						<feature mandatory="true" name="Tradicionales"/>
+					</alt>
+				</and>
+				<and mandatory="true" name="GestionActivos">
+					<feature mandatory="true" name="AdquisicionInmuebles"/>
+					<feature mandatory="true" name="GestionInmuebles"/>
+					<feature mandatory="true" name="Alquileres"/>
+					<or mandatory="true" name="Reportes">
+						<feature mandatory="true" name="Financiero"/>
+						<feature mandatory="true" name="Operativo"/>
+					</or>
+					<feature name="Valoraciones"/>
+					<feature name="Auditorias"/>
+					<feature name="RevisionesMercado"/>
+					<feature name="Contabilidad"/>
+					<feature name="Refinanciaciones"/>
+					<feature name="VentaActivos"/>
+				</and>
+				<and mandatory="true" name="GestionInmobiliaria">
+					<and mandatory="true" name="GestionOperativa">
+						<feature name="GestionEquipamento"/>
+						<feature name="Instalaciones"/>
+						<feature name="ActivosFijos"/>
+					</and>
+					<feature name="Tasaciones"/>
+					<and name="Reservas">
+						<feature name="ControlReservas"/>
+						<feature name="AceptacionPropietario"/>
+						<feature name="VigenciaReserva"/>
+						<feature name="FechaEscritura"/>
+					</and>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>Valoraciones</var>
+					<var>Auditorias</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>Contabilidad</var>
+					<var>VentaActivos</var>
+				</imp>
+			</rule>
+			<rule>
+				<eq>
+					<var>GestionEquipamento</var>
+					<var>ActivosFijos</var>
+				</eq>
+			</rule>
+			<rule>
+				<eq>
+					<var>Instalaciones</var>
+					<var>ActivosFijos</var>
+				</eq>
+			</rule>
+			<rule>
+				<eq>
+					<var>GobiernoCorporativo</var>
+					<var>RelacionInversores</var>
+				</eq>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

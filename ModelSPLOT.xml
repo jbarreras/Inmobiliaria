@@ -1,0 +1,53 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r Inmobiliaria(Inmobiliaria)
+	:o GestionCapital(GestionCapital)
+		:o GobiernoCorporativo(GobiernoCorporativo)
+		:o RelacionInversores(RelacionInversores)
+		:m Inversiones(Inversiones)
+		:m AdquisicionYVentaDeActivos(AdquisicionYVentaDeActivos)
+			:g [1,1]
+				: Alternativos(Alternativos)
+					:g [1,1]
+						: Vehiculos(Vehiculos)
+						: PatrimoniosAutonomos(PatrimoniosAutonomos)
+						: FondoCapitalPrivado(FondoCapitalPrivado)
+						: CarterasColectivas(CarterasColectivas)
+				: Tradicionales(Tradicionales)
+	:m GestionActivos(GestionActivos)
+		:m AdquisicionInmuebles(AdquisicionInmuebles)
+		:m GestionInmuebles(GestionInmuebles)
+		:m Alquileres(Alquileres)
+		:m Reportes(Reportes)
+			:g [1,*]
+				: Financiero(Financiero)
+				: Operativo(Operativo)
+		:o Valoraciones(Valoraciones)
+		:o Auditorias(Auditorias)
+		:o RevisionesMercado(RevisionesMercado)
+		:o Contabilidad(Contabilidad)
+		:o Refinanciaciones(Refinanciaciones)
+		:o VentaActivos(VentaActivos)
+	:m GestionInmobiliaria(GestionInmobiliaria)
+		:m GestionOperativa(GestionOperativa)
+			:o GestionEquipamento(GestionEquipamento)
+			:o Instalaciones(Instalaciones)
+			:o ActivosFijos(ActivosFijos)
+		:o Tasaciones(Tasaciones)
+		:o Reservas(Reservas)
+			:o ControlReservas(ControlReservas)
+			:o AceptacionPropietario(AceptacionPropietario)
+			:o VigenciaReserva(VigenciaReserva)
+			:o FechaEscritura(FechaEscritura)
+</feature_tree>
+<constraints>
+C1:~Valoraciones  or  Auditorias
+C2:~Contabilidad  or  VentaActivos
+C3:~GestionEquipamento  or  ActivosFijos
+C4:~ActivosFijos  or  GestionEquipamento
+C5:~Instalaciones  or  ActivosFijos
+C6:~ActivosFijos  or  Instalaciones
+C7:~GobiernoCorporativo  or  RelacionInversores
+C8:~RelacionInversores  or  GobiernoCorporativo
+</constraints>
+</feature_model>
